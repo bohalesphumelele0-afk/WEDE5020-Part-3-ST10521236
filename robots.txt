@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ubuntu-youth.netlify.app/sitemap.xml

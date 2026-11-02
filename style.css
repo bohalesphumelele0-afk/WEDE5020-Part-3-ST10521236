@@ -1,0 +1,877 @@
+/* =============================================================
+   Ubuntu Youth Foundation - main stylesheet
+   WEDE5020 Part 2 (CSS Styling and Responsive Design)
+   Author: Sphumelele Sibusiso Bohale (ST10521236)
+
+   Contents
+   1.  Font import
+   2.  Reset
+   3.  Colour and font variables
+   4.  Default (base) styles
+   5.  Layout helpers
+   6.  Buttons
+   7.  Header and navigation
+   8.  Hero section
+   9.  Home page cards
+   10. Call to action band
+   11. Page headings
+   12. About page
+   13. Programs page
+   14. Forms and testimonials
+   15. Contact details and map
+   16. Footer
+   17. Tablet breakpoint (max-width: 992px)
+   18. Mobile breakpoint (max-width: 600px)
+   19. Reduced motion
+   ============================================================= */
+
+
+/* ---------- 1. Font import ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap');
+
+
+/* ---------- 2. Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ---------- 3. Colour and font variables ---------- */
+:root {
+  --teal-dark: #0f4d4a;
+  --teal: #17726c;
+  --teal-tint: #e6f1ef;
+  --orange: #b4520e;
+  --orange-bright: #e8811f;
+  --ink: #1d2b29;
+  --body-text: #4c5a58;
+  --line: #d7e3e0;
+  --page: #f5faf9;
+  --white: #ffffff;
+
+  --font-heading: 'Nunito', 'Segoe UI', Tahoma, sans-serif;
+  --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  --wrap: 1100px;
+  --radius: 10px;
+  --shadow: 0 4px 14px rgba(15, 77, 74, 0.10);
+}
+
+
+/* ---------- 4. Default (base) styles ---------- */
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--body-text);
+  background-color: var(--white);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong {
+  color: var(--ink);
+}
+
+em {
+  color: var(--teal-dark);
+  font-style: italic;
+}
+
+
+/* ---------- 5. Layout helpers ---------- */
+.container {
+  width: 90%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-tint {
+  background-color: var(--page);
+}
+
+.section-title {
+  margin-bottom: 2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 3px solid var(--orange-bright);
+  display: inline-block;
+}
+
+.intro {
+  max-width: 60ch;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+
+/* ---------- 6. Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border: 2px solid var(--orange);
+  border-radius: 6px;
+  background-color: var(--orange);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  background-color: #8f400a;
+  border-color: #8f400a;
+}
+
+.btn:focus {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+.btn:active {
+  transform: translateY(2px);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  border-color: var(--teal-dark);
+  color: var(--teal-dark);
+}
+
+.btn-ghost:hover {
+  background-color: var(--teal-dark);
+  border-color: var(--teal-dark);
+  color: var(--white);
+}
+
+.btn-light {
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--teal-dark);
+}
+
+.btn-light:hover {
+  background-color: var(--teal-tint);
+  border-color: var(--teal-tint);
+  color: var(--teal-dark);
+}
+
+.btn-light:focus {
+  outline-color: var(--white);
+}
+
+
+/* ---------- 7. Header and navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 0;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.brand img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--teal-dark);
+  line-height: 1.15;
+  max-width: 9em;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.main-nav a {
+  display: block;
+  padding: 0.55rem 0.9rem;
+  border-radius: 6px;
+  border-bottom: 3px solid transparent;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--teal-dark);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.main-nav a:hover {
+  background-color: var(--teal-tint);
+  color: var(--teal);
+}
+
+.main-nav a:focus {
+  outline: 3px solid var(--orange-bright);
+  outline-offset: 2px;
+}
+
+.main-nav a:active {
+  background-color: var(--teal-dark);
+  color: var(--white);
+}
+
+.main-nav .current {
+  border-bottom-color: var(--orange-bright);
+  color: var(--orange);
+}
+
+
+/* ---------- 8. Hero section ---------- */
+.hero {
+  background: linear-gradient(180deg, var(--teal-tint) 0%, var(--white) 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 0;
+}
+
+.hero-text h1 {
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  max-width: 44ch;
+  font-size: 1.1rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.6rem;
+}
+
+.hero-image {
+  position: relative;
+  justify-self: center;
+  max-width: 330px;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  right: -26px;
+  width: 140px;
+  height: 140px;
+  border: 8px solid var(--orange-bright);
+  border-radius: 50%;
+}
+
+.hero-image img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 10px 26px rgba(15, 77, 74, 0.22);
+}
+
+
+/* ---------- 9. Home page cards ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 1.8rem 1.6rem;
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--teal);
+  border-radius: var(--radius);
+  transition: box-shadow 0.2s ease, border-top-color 0.2s ease;
+}
+
+.card:hover {
+  border-top-color: var(--orange-bright);
+  box-shadow: var(--shadow);
+}
+
+
+/* ---------- 10. Call to action band ---------- */
+.cta-band {
+  padding: 3.5rem 0;
+  background-color: var(--teal-dark);
+  color: var(--teal-tint);
+}
+
+.cta-inner {
+  text-align: center;
+}
+
+.cta-band h2 {
+  color: var(--white);
+}
+
+.cta-band p {
+  max-width: 50ch;
+  margin: 0 auto 1.6rem;
+}
+
+
+/* ---------- 11. Page headings ---------- */
+.page-head {
+  padding: 3rem 0 2.5rem;
+  background-color: var(--page);
+  border-bottom: 4px solid var(--orange-bright);
+}
+
+.page-head h1 {
+  margin-bottom: 0.6rem;
+}
+
+.page-head p {
+  max-width: 62ch;
+  font-size: 1.05rem;
+}
+
+
+/* ---------- 12. About page ---------- */
+.split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.split-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border-bottom: 6px solid var(--orange-bright);
+  box-shadow: var(--shadow);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.panel {
+  padding: 2rem;
+  background-color: var(--white);
+  border-left: 5px solid var(--teal);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.team-card {
+  padding: 1.8rem 1.4rem;
+  text-align: center;
+  background-color: var(--page);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 0.9rem;
+  border-radius: 50%;
+  background-color: var(--teal-dark);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.team-card p {
+  color: var(--orange);
+  font-weight: bold;
+}
+
+
+/* ---------- 13. Programs page ---------- */
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.program {
+  padding: 1.8rem;
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--orange-bright);
+  border-radius: var(--radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.program h2 {
+  font-size: 1.3rem;
+}
+
+.program:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+
+/* ---------- 14. Forms and testimonials ---------- */
+.form-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  align-items: start;
+  gap: 2.5rem;
+}
+
+.form-panel {
+  padding: 2rem;
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.field {
+  margin-bottom: 1.1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background-color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  transition: border-color 0.2s ease;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--teal);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--teal-dark);
+  box-shadow: 0 0 0 3px rgba(23, 114, 108, 0.2);
+}
+
+.side-panel {
+  padding: 1.8rem;
+  background-color: var(--teal-tint);
+  border-radius: var(--radius);
+}
+
+blockquote {
+  margin-bottom: 1.4rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--orange-bright);
+  font-style: italic;
+}
+
+blockquote:last-child {
+  margin-bottom: 0;
+}
+
+cite {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 700;
+  color: var(--teal-dark);
+}
+
+
+/* ---------- 15. Contact details and map ---------- */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: start;
+  gap: 2.5rem;
+}
+
+.office-list {
+  margin-bottom: 1.5rem;
+}
+
+.office-list li {
+  margin-bottom: 1rem;
+  padding: 1rem 1.2rem;
+  background-color: var(--page);
+  border-left: 4px solid var(--teal);
+  border-radius: 6px;
+}
+
+.contact-details a {
+  color: var(--orange);
+  border-bottom: 1px solid transparent;
+}
+
+.contact-details a:hover,
+.contact-details a:focus {
+  border-bottom-color: var(--orange);
+}
+
+.map-frame {
+  height: 420px;
+  overflow: hidden;
+  border: 4px solid var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+/* ---------- 16. Footer ---------- */
+.site-footer {
+  background-color: var(--teal-dark);
+  color: #cfe2df;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2rem;
+  padding: 3rem 0 2rem;
+}
+
+.footer-col h3 {
+  margin-bottom: 0.9rem;
+  color: var(--white);
+}
+
+.footer-links li {
+  margin-bottom: 0.45rem;
+}
+
+.site-footer a {
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--orange-bright);
+  border-bottom-color: var(--orange-bright);
+}
+
+.site-footer a:focus {
+  outline: 2px solid var(--orange-bright);
+  outline-offset: 2px;
+}
+
+.footer-bottom {
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+
+/* ---------- 17. Tablet breakpoint (max-width: 992px) ---------- */
+@media screen and (max-width: 992px) {
+  html {
+    font-size: 95%;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  /* navigation wraps under the logo and centres itself */
+  .header-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .main-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main-nav a {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  /* two columns become one on the hero and the about story */
+  .hero-inner,
+  .split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  .hero-text p,
+  .page-head p {
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .split-image {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+
+  /* three columns become two */
+  .card-grid,
+  .program-grid,
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-layout,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .map-frame {
+    height: 340px;
+  }
+}
+
+
+/* ---------- 18. Mobile breakpoint (max-width: 600px) ---------- */
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 90%;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  body {
+    line-height: 1.6;
+  }
+
+  .container {
+    width: 92%;
+  }
+
+  .section {
+    padding: 2.25rem 0;
+  }
+
+  /* full width stacked navigation */
+  .header-bar {
+    padding: 0.7rem 0;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .main-nav {
+    width: 100%;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  .main-nav a {
+    padding: 0.7rem 0.5rem;
+    border-radius: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .main-nav .current {
+    background-color: var(--teal-tint);
+    border-bottom-color: var(--orange-bright);
+  }
+
+  /* everything stacks into a single column */
+  .card-grid,
+  .program-grid,
+  .team-grid,
+  .two-col,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-inner {
+    padding: 2.25rem 0;
+  }
+
+  .hero-image {
+    max-width: 82%;
+  }
+
+  .hero-image::before {
+    display: none;
+  }
+
+  .split-image {
+    max-width: 90%;
+  }
+
+  /* buttons become full width so they are easy to tap */
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .form-panel,
+  .side-panel,
+  .panel,
+  .program {
+    padding: 1.25rem;
+  }
+
+  .map-frame {
+    height: 260px;
+  }
+
+  .footer-grid {
+    padding: 2rem 0 1.5rem;
+  }
+}
+
+
+/* ---------- 19. Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
